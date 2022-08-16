@@ -16,7 +16,7 @@ switch($urlParams[0])
         $ICounter->myCount($urlParams[1],2);
         // код ответа
         http_response_code($ICounter->pStatus);
-        echo json_encode(array("string" =>$urlParams[1], "resulttest" =>"2-d","Method"=>$urlParams[0], 'status'=>$ICounter->pStatus, 'statusDescription'=>$ICounter->pStatus_description));
+        echo json_encode(array("string" =>$urlParams[1], "resulttest" =>$ICounter->pSimbol,"Method"=>$urlParams[0], 'status'=>$ICounter->pStatus, 'statusDescription'=>$ICounter->pStatus_description));
         break;
 
     default;

@@ -2,7 +2,7 @@
 // объект 'Counter'
 class ICounter {
  
-    public $simbol= "";
+    public $pSimbol= "";
     public $pStatus= "";
     public $pStatus_description="";
 
@@ -11,24 +11,22 @@ class ICounter {
         // Проверяем удавлетворяет ли строка наши ожидания, хотим видеть только буквы
         if (ctype_alpha($str)) {
 
-            $arrayStr = explode('',$str);
-            $arrayResult = array();
-            foreach($arrayStr as $key => $val) {
-                if (isset($arrayResult[$val])) {
-                    $arrayResult[$val]=$arrayResult[$val]+1;
-                }else{
-                    $arrayResult[$val]=1;
-                }
-            }
+            $arrayResult =count_chars($str, 1);    
+            arsort($arrayResult);
+            next($arrayResult);
+            $freqs = array_count_values($arrayResult);
+            $this->pSimbol=$freqs[$arrayResult[key($arrayResult)]]==1 ? chr(key($arrayResult)) : false;
 
-            $this->pStatus="200";
-            $this->pStatus_description="";
+
+            $this->pStatus=!$this->pSimbol ? "400" : "200";
+            $this->pStatus_description=!$this->pSimbol ? "В строке несколько символов претендующих на ответ" : "";
             return true;
 
         } else {
             // echo "Строка $testcase состоит не только из букв.\n";
             $this->pStatus="400";
             $this->pStatus_description="Строка должна состоять только из букв";
+            $this->pSimbol=false;
             return false;
         }
 

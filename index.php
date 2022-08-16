@@ -25,7 +25,7 @@ switch($urlParams[0]){
         $IPalindrome->myPalindrome($urlParams[1]);
         // код ответа
         http_response_code($IPalindrome->pStatus);
-        echo json_encode(array("string" =>$urlParams[1], "resulttest" =>$IPalindrome->pResult,"Method"=>$urlParams[0], 'status'=>$IPalindrome->pStatus, 'statusDescription'=>$ICounter->pStatus_description));
+        echo json_encode(array("string" =>$urlParams[1], "resulttest" =>$IPalindrome->pResult,"Method"=>$urlParams[0], 'status'=>$IPalindrome->pStatus, 'statusDescription'=>$IPalindrome->pStatus_description));
         break;
 
     default;

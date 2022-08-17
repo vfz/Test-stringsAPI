@@ -17,7 +17,12 @@ class IPalindrome {
 
     // Функция возвращает true если строка палиндром и false если нет
     function myPalindrome ($str){
-
+        //Строго говоря палиндром это сочетание символов одинаково читаемое в обе стороны но будем считать что еденичный симовл это палиндром
+        if(!isset($str) || empty($str)){
+            $this->pStatus="400";
+            $this->pStatus_description="нет строки для проверки";
+            return false;
+        }
         $this->pResult = $str===$this->mb_strrev($str) ? true : false;      
         $this->pStatus="200";
         $this->pStatus_description= "";
